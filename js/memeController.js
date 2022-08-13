@@ -28,7 +28,6 @@ function renderMeme() {
     const img = new Image()
 
     img.src = findImgByid(currMeme.selectedImgId).url
-    if(gUserImg)img.src = gUserImg
     img.onload = () => {
        
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -111,12 +110,10 @@ function onSearch(value) {
 }
 
 function onAddLine(value) {
-    console.log(getMeme())
     if (getMeme().lines.length > 5) return
     document.querySelector('[name="text-meme"]').value = ''
     setNewLine(value)
     getMeme().lines.forEach((line, idx) => lineLocation(idx))
-    console.log(getMeme())
     renderMeme()
 }
 
@@ -150,7 +147,6 @@ function onRemoveLine() {
     }
     getMeme().lines.splice(getMeme().selectedLineIdx, 1)
 
-    console.log(getMeme())
     renderMeme()
 
 }
@@ -160,7 +156,6 @@ function onChangeFont(font) {
     setFont(font)
     if (!getMeme().lines[getMeme().selectedLineIdx].isChoose) return
 
-    console.log(getMeme().lines[getMeme().selectedLineIdx].font)
     renderMeme()
 }
 
@@ -196,14 +191,10 @@ function onChangeLineHeight(value) {
     if (!getMeme().lines[getMeme().selectedLineIdx]) return
     if (!getMeme().lines[getMeme().selectedLineIdx].isChoose) return
     if (value === 'up') {
-        console.log('plus')
         getMeme().lines[getMeme().selectedLineIdx].pos -= 10
-        console.log(getMeme().selectedLineIdx)
-        console.log(getMeme().lines[getMeme().selectedLineIdx].pos)
     }
     if (value === 'down') {
         getMeme().lines[getMeme().selectedLineIdx].pos += 10
-        console.log(getMeme().lines[getMeme().selectedLineIdx].pos)
 
 
     }
@@ -217,8 +208,6 @@ function addListeners() {
     addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
-        console.log('ENTER');
-        console.log(getMeme().lines);
         renderMeme()
     })
 }
@@ -241,11 +230,9 @@ function onDown(ev) {
     // Getting the clicked position
     const pos = getEvPos(ev)
 
-    console.log(pos);
     if (!isLineClicked(pos)) return
     getMeme().lines[getMeme().selectedLineIdx].isChoose = true
     setLineDrag(true)
-    console.log(gMeme.lines[gMeme.selectedLineIdx].isDrag);
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 }
@@ -264,7 +251,6 @@ function onMove(ev) {
 
 function onUp() {
     setLineDrag(false)
-    console.log(gMeme.lines[gMeme.selectedLineIdx].isDrag);
 
     document.body.style.cursor = 'pointer'
 }

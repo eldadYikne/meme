@@ -60,7 +60,6 @@ function setLineText(value) {
 
 function setImg(id) {
     gMeme.selectedImgId = id
-    console.log(gMeme);
     renderMeme()
 
 }
@@ -71,9 +70,7 @@ function setSearchMeme(value) {
     const imgs = gImgs.forEach(img => img.keywords
         .filter(key => {
             key === value
-            console.log(key);
         }));
-    console.log(imgs);
 
 
 }
@@ -96,7 +93,6 @@ function setNewLine(value = 'New Text') {
 function lineLocation(idx) {
 
     let height = 50
-    console.log('idx', idx)
 
     if (idx === 0 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height
     if (idx === 1 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height * 7
@@ -147,7 +143,6 @@ function setLineDrag(isDrag) {
 function isLineClicked(clickedPos) {
   
     const { pos } = gMeme.lines[gMeme.selectedLineIdx]
-    console.log('pos', gMeme.lines[gMeme.selectedLineIdx].pos);
     if (clickedPos.y < pos + 40 && clickedPos.y > pos - 30) return true
     else return false
 }
