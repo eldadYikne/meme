@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="stylesheet" href="css/meme-css.css">
+</head>
+
+<body onload="init()">
+
+
+    <div calss="main-container flex">
+
+        <header>
+            <nav>
+                <div>
+                    MemeGenerator
+                </div>
+                <ul class=" main-nav-list">
+
+                    <li> <a href="">Gallery </a> </li>
+                    <li> <a href="">About </a> </li>
+                    <li class="flexible-a"> <a onclick="onFlexible()">I'm flexible </a> </li>
+
+            </nav>
+            </ul>
+            <button class="toggle-menu" onclick=" toggleNavBar()">☰</button>
+
+        </header>
+        <section class="gallery">
+            <div class="search"> </div>
+            <div class="gallery-option-container">
+
+                <input oninput="onSearch(this.value)" type="search" name="user-color" placeholder="search" />
+                <button> <img class="search-btn" src="img/ICONS/search-icon.png"></button>
+                <button class="flexible-btn" onclick="onFlexible()">I'm flexible </button>
+                
+                <div class="gallery-container">
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="editor">
+
+            <div class="main-container flex">
+
+                <div class="canvas-container">
+                    <h3></h3>
+                    <canvas id="my-canvas" height="450" width="450"></canvas>
+                </div>
+
+
+
+                <div class="editor-container">
+
+
+                    <br>
+                    <li class="flex input-meme"><input oninput="onInputText(this.value)" type="text"
+                            placeholder="type your moove..." name="text-meme"></li>
+                    <ul class="row flex">
+
+                        <li class="row flex"><button onclick="onAddLine()" name="add"> <img
+                                    src="img/ICONS/add.png"></button></li>
+
+                        <li class="row flex"> <button onclick="onReplaceLine()" name="replace"> <img
+                                    src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                        </li>
+                        <li> <button onclick="onRemoveLine()"> <img src="img/ICONS/trash.png"> </button> </li>
+                        <li> <button onclick="onChangeLineHeight(this.name)" name="up"> <img
+                                    src="img/ICONS/up.png"></button></li>
+                        </li>
+                        <li> <button onclick="onChangeLineHeight(this.name)" name="down"> <img
+                                    src="img/ICONS/down.png"></button></li>
+                        </li>
+                    </ul>
+                    <ul class="row flex">
+
+                        <li>
+                            <div class="input-color-container">
+                                <input oninput="onSetColor(this.value)" id="input-color" value="#AD4379"
+                                    class="input-color" type="color">
+                            </div>
+                            <label class="input-color-label" for="input-color">
+                            </label>
+                        </li>
+                        <li>
+                            <div class="input-color-container">
+                                <input oninput="onSetColorStroke(this.value)" id="input-color" value="#B2F302"
+                                    class="input-color" type="color">
+                            </div>
+                            <label class="input-color-label" for="input-color">
+                            </label>
+
+                        </li>
+
+                        <li><button onclick="onCahngeFontSize(this.name)" name="plus"> <img
+                                    src="img/ICONS/increase font - icon.png"></button></li>
+                        <li> <button onclick="onCahngeFontSize(this.name)" name="minus"> <img
+                                    src="img/ICONS/decrease font - icon.png"></button></li>
+                        <li><select oninput="onChangeFont(this.value)">
+                                <option value="impact">impact</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Arial">Arial</option>
+                            </select> </li> <br>
+
+                    </ul>
+
+                    <ul class="row flex wrap">
+                        <li> <button onclick="onCahngeTxtSide(this.name)" name="left"> <img
+                                    src="img/ICONS/align-to-left.png"></button></li>
+                        <li> <button onclick="onCahngeTxtSide(this.name)" name="align"> <img
+                                    src="img/ICONS/center-align.png"></button></li>
+                        <li> <button onclick="onCahngeTxtSide(this.name)" name="right"> <img
+                                    src="img/ICONS/align-to-right.png"></button></li>
+
+                    </ul>
+                        <ul class="emoji-container">
+
+
+                            <div class="emoji-container">
+                                <button onclick="onPutEmoji()"><img src="img/ICONS/left-arrow.png"> </button>
+                                <div class="emojis"></div>
+                                <button onclick="onPutEmoji()"><img src="img/ICONS/right-arrow.png"> </button>
+                            </div>
+                        </ul>
+
+                        <div class="social-container flex">
+                            <ul class="flex contain-facebook">
+                                <li> <button class="btn btn-primary">
+                                        <a href="#" onclick="downloadCanvas(this)" download=""><img
+                                                src="img/ICONS/downloading.png"></a>
+                                    </button></li>
+                                <li>
+                                    <div class="download-img">
+                                        <button class="btn web-btn" onclick="uploadImg()"><img
+                                                src="img/ICONS/facebook.png"></button>
+                                        <div class="share-container"> </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <button>
+                                        <img src="img/ICONS/upload.png">
+                                     <input  class="upload-file" type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                      
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <footer> MemeGenerator</footer>
+    <script src="js/utils.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/storageService.js"></script>
+    <script src="js/galleryService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
+</body>
+
+</html>
