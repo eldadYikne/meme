@@ -82,12 +82,15 @@ a:hover>*:not(.full) {
     text-decoration: underline;
     cursor: pointer;
 }
-
+.remove-saved {
+    position: absolute;
+    color: white;
+}
 nav ul {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-inline-start: 0;
-
+    cursor: pointer;
 }
 
 nav ul li {
@@ -462,6 +465,5 @@ button.toggle-menu {
 
     a:-webkit-any-link {
 
-        margin-inline-end: 147px;
     }
 }

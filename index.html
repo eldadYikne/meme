@@ -22,9 +22,10 @@
                 </div>
                 <ul class=" main-nav-list">
 
-                    <li> <a href="">Gallery </a> </li>
-                    <li> <a href="">About </a> </li>
-                    <li class="flexible-a"> <a onclick="onFlexible()">I'm flexible </a> </li>
+                    <li onclick=" toggleNavBar()"> <a href="">Gallery </a> </li>
+                    <li onclick=" toggleNavBar()"> <a onclick="onPageSaved()">Saved </a> </li>
+                    <li onclick=" toggleNavBar()"> <a href=""> About </a> </li>
+                    <li onclick=" toggleNavBar()" class="flexible-a"> <a onclick="onFlexible()">I'm flexible </a> </li>
 
             </nav>
             </ul>
@@ -62,7 +63,7 @@
                 <div class="editor-container">
 
 
-                    <input class="flex input-meme" oninput="onInputText(this.value)" type="text"
+                    <input class="flex input-meme" oninput="onChangeOption(this.value,this.name)" type="text"
                         placeholder="type your moove..." name="text-meme">
                     <ul class="row flex">
 
@@ -84,7 +85,7 @@
 
                         <li>
                             <div class="input-color-container">
-                                <input oninput="onSetColor(this.value)" id="input-color" value="#AD4379"
+                                <input oninput="onChangeOption(this.value,this.name)" name="color" id="input-color" value="#AD4379"
                                     class="input-color" type="color">
                             </div>
                             <label class="input-color-label" for="input-color">
@@ -92,7 +93,7 @@
                         </li>
                         <li>
                             <div class="input-color-container">
-                                <input oninput="onSetColorStroke(this.value)" id="input-color" value="#B2F302"
+                                <input oninput="onChangeOption(this.value,this.name)" name="stroke" id="input-color" value="#B2F302"
                                     class="input-color" type="color">
                             </div>
                             <label class="input-color-label" for="input-color">
@@ -163,6 +164,12 @@
                                         onchange="onImgInput(event)" />
                                 </button>
                             </li>
+                            <li>
+                                <button>
+                                    <img src="img/ICONS/save.png"
+                                        onclick="onSaveMeme(event)" />
+                                </button>
+                            </li>
                         </ul>
                     </div>
 
@@ -170,14 +177,17 @@
 
             </div>
         </section>
+        <section class="saved">
+
+        </section>
     </div>
     <footer> MemeGenerator</footer>
     <script src="js/utils.js"></script>
-    <script src="js/memeService.js"></script>
-    <script src="js/storageService.js"></script>
-    <script src="js/galleryService.js"></script>
-    <script src="js/memeController.js"></script>
-    <script src="js/galleryController.js"></script>
+    <script src="js/meme.service.js"></script>
+    <script src="js/storage.service.js"></script>
+    <script src="js/gallery.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
 </body>
 
 </html>

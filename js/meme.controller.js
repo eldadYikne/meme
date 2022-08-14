@@ -23,18 +23,18 @@ function onInit() {
 
 
 function renderMeme() {
-    
+
     const currMeme = getMeme()
     const img = new Image()
-    
+
     img.src = findImgByid(currMeme.selectedImgId).url
     img.onload = () => {
-        
+
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLines()
         if (gIsEmoji) drawEmojy(gCurrEmoji, 30, 100)
     }
-    
+
 }
 
 
@@ -62,7 +62,6 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-    // Getting the clicked position
     const pos = getEvPos(ev)
     if (!isLineClicked(pos)) return
     getMeme().lines[getMeme().selectedLineIdx].isChoose = true
@@ -96,7 +95,6 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
-    // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
     if (gTouchEvs.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
@@ -109,7 +107,7 @@ function getEvPos(ev) {
 }
 function renderLines() {
     const currMeme = getMeme()
-    
+
     currMeme.lines.forEach((img, idx) => {
         drawText(img.txt, currMeme.lines[idx].pos.x, currMeme.lines[idx].pos.y, idx)
 
@@ -117,6 +115,13 @@ function renderLines() {
             drawRect(20, currMeme.lines[getMeme().selectedLineIdx].pos.y - 30)
         }
     })
+}
+function onFlexible() {
+    let randomImgId = getRandomInt(0, getImgs().length - 1)
+    setRandomOptions()
+    onImgSelect(randomImgId)
+    onSetColorStroke()
+    onSetColor()
 }
 function drawRect(x, y) {
     gCtx.beginPath()
@@ -144,24 +149,10 @@ function onChangeTxtSide(value) {
     renderMeme()
 }
 
-function onSetColorStroke(color) {
+function onChangeOption(value, key) {
     if (getMeme().lines.length === 0) return
-    // setColor()
-    const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].strokeColor = color
-    renderMeme()
-}
-
-function onSetColor(txtColor) {
-    if (getMeme().lines.length === 0) return
-
-    getMeme().lines[getMeme().selectedLineIdx].color = txtColor
-    renderMeme()
-}
-function onInputText(value) {
-    if (getMeme().lines.length === 0) return
-
-    setLineText(value)
+    console.log('hey');
+    setChangeByUser(value, key)
     renderMeme()
 }
 
@@ -175,13 +166,9 @@ function onChangeFontSize(value) {
         gFontSizeCount--
 
     }
-    getMeme().lines[getMeme().selectedLineIdx].size = gFontSizeCount + 'px'
+    setFontSize()
 
     renderMeme()
-}
-
-function onSearch(value) {
-    setSearchMeme(value)
 }
 
 function onAddLine(value) {
@@ -195,30 +182,20 @@ function onAddLine(value) {
 function onReplaceLine() {
     let currMeme = getMeme()
     if (!currMeme.lines.length) return
-    if (currMeme.selectedLineIdx === currMeme.lines.length) {
-        currMeme.selectedLineIdx--
-    }
-    currMeme.lines[currMeme.selectedLineIdx].isChoose = false
-    if (currMeme.lines.length - 1 > currMeme.selectedLineIdx) {
-        currMeme.selectedLineIdx++
-    } else if (currMeme.selectedLineIdx && currMeme.selectedLineIdx === currMeme.lines.length - 1) {
-        currMeme.selectedLineIdx = 0
-    }
-    document.querySelector('[name="text-meme"]').value = currMeme.lines[currMeme.selectedLineIdx].txt
-
-    currMeme.lines[currMeme.selectedLineIdx].isChoose = true
-
+    setReplaceLine()
     renderMeme()
 
 }
 
 function onRemoveLine() {
-    if (getMeme().lines.length === 0) return
-    if (!getMeme().lines[getMeme().selectedLineIdx].isChoose) return
-    if (getMeme().selectedLineIdx === getMeme().lines.length && getMeme().selectedLineIdx) {
-        getMeme().selectedLineIdx--
+        let currMeme = getMeme()
+
+    if (currMeme.lines.length === 0) return
+    if (!currMeme.lines[currMeme.selectedLineIdx].isChoose) return
+    if (currMeme.selectedLineIdx === currMeme.lines.length && currMeme.selectedLineIdx) {
+        currMeme.selectedLineIdx--
     }
-    getMeme().lines.splice(getMeme().selectedLineIdx, 1)
+    currMeme.lines.splice(currMeme.selectedLineIdx, 1)
 
     renderMeme()
 
@@ -313,8 +290,8 @@ function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
 }
 
-document.querySelector('.share-container').innerHTML = ''
 function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
 
     var reader = new FileReader()
 
