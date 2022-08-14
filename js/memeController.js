@@ -119,19 +119,17 @@ function onAddLine(value) {
 
 function onReplaceLine() {
     let currMeme = getMeme()
-    if (currMeme.lines.length === 0) return
-    document.querySelector('[name="text-meme"]').value = ''
-
+    if (!currMeme.lines.length) return
     if (currMeme.selectedLineIdx === currMeme.lines.length) {
         currMeme.selectedLineIdx--
     }
     currMeme.lines[currMeme.selectedLineIdx].isChoose = false
-
     if (currMeme.lines.length - 1 > currMeme.selectedLineIdx) {
         currMeme.selectedLineIdx++
     } else if (currMeme.selectedLineIdx || currMeme.selectedLineIdx === currMeme.lines.length - 1) {
         currMeme.selectedLineIdx = 0
     }
+    document.querySelector('[name="text-meme"]').value = currMeme.lines[currMeme.selectedLineIdx].txt
 
     currMeme.lines[currMeme.selectedLineIdx].isChoose = true
 
@@ -238,6 +236,8 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
+    if (getMeme().lines.length === 0) return
+
     const line = getMeme().lines[getMeme().selectedLineIdx];
     if (!line.isDrag) return
     const pos = getEvPos(ev)

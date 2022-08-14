@@ -142,7 +142,7 @@ button {
     grid-gap: 5px;
     width: 98%;
     margin: 10px;
-
+    justify-content:center;
 }
 
 img {
@@ -344,15 +344,15 @@ button.toggle-menu {
     .main-nav-list {
         position: fixed;
         flex-direction: column;
-        top: 6%;
+        top: 8%;
         right: 0;
-        background-color: rgba(107, 103, 96, 0.904);
-        max-height: 100vh;
+        height: 100vh;
         text-align: center;
         justify-content: center;
-        width: 97.4%;
+        width:120px; 
         transform: translateX(100%);
-        
+        background: rgba(219, 139, 139, 0.945);
+
     }
 
     .flexible-btn {
@@ -361,17 +361,17 @@ button.toggle-menu {
 
     body.menu-opened .main-nav-list {
         transform: translateX(0);
+        transition: 0.5s;
 
     }
 
     body.menu-opened .screen {
-        opacity: 1;        
+        /* opacity: 1;         */
     }
 
     body.menu-opened header {
-        position: fixed;
-        width: 100%;
-        background-color: black;
+        /* position: fixed; */
+        width: 100vw;
     }
 
     header {
@@ -392,6 +392,7 @@ button.toggle-menu {
     nav,
     .main-nav-list {
         display: flex;
+        margin-inline-end: 39px;
     }
 
     .flexible-a {
