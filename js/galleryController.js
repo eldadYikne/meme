@@ -1,6 +1,5 @@
 'use strict'
 
-var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 9, dog: 10, cute: 7, crazy: 9, happy: 14, }
 
 
 function renderGallery() {
@@ -34,15 +33,16 @@ function toggleNavBar() {
 }
 
 
-function onSearchWord() {
+function renderKeyWord() {
+    let keyWords = getKeyWords()
     var strHtml = ''
-    for (let keyWord in gKeywordSearchCountMap) {
-        strHtml += `<a onclick="onClickWord(this)" style="font-size:${gKeywordSearchCountMap[keyWord] * 3}px;" name="${keyWord}">       ${keyWord}</a>`
+    for (let keyWord in keyWords) {
+        strHtml += `<a onclick="onClickWord(this)" style="font-size:${keyWords[keyWord] * 3}px;" name="${keyWord}">       ${keyWord}</a>`
     }
-    document.querySelector('.search').innerHTML = strHtml
+    document.querySelector('.key-word').innerHTML = strHtml
 
 }
 function onClickWord(word) {
     gKeywordSearchCountMap[word.name]++
-    onSearchWord()
+    renderKeyWord()
 }

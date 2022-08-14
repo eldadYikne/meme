@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor</title>
     <link rel="stylesheet" href="css/meme-css.css">
+    <!-- favicon -->
 </head>
 
-<body onload="init()">
+<body onload="onInit()">
 
 
-    <div calss="main-container flex">
+    <div class="main-container ">
 
         <header>
             <nav class="space-between">
@@ -31,13 +32,13 @@
 
         </header>
         <section class="gallery">
-            <div class="search"> </div>
+            <div class="key-word"> </div>
             <div class="gallery-option-container">
 
-                <input oninput="onSearch(this.value)" type="search" name="user-color" placeholder="search" />
+                <input oninput="onSearch(this.value)" type="search" name="search" placeholder="search" />
                 <button> <img class="search-btn" src="img/ICONS/search-icon.png"></button>
                 <button class="flexible-btn" onclick="onFlexible()">I'm flexible </button>
-                
+
                 <div class="gallery-container">
 
                 </div>
@@ -49,11 +50,10 @@
 
 
         <section class="editor">
-            <div  class="screen"></div>
+            <div class="screen"></div>
             <div class="main-container flex">
 
                 <div class="canvas-container">
-                    <h3></h3>
                     <canvas id="my-canvas" height="450" width="450"></canvas>
                 </div>
 
@@ -62,9 +62,8 @@
                 <div class="editor-container">
 
 
-                    <br>
-                    <li class="flex input-meme"><input oninput="onInputText(this.value)" type="text"
-                            placeholder="type your moove..." name="text-meme"></li>
+                    <input class="flex input-meme" oninput="onInputText(this.value)" type="text"
+                        placeholder="type your moove..." name="text-meme">
                     <ul class="row flex">
 
                         <li class="row flex"><button onclick="onAddLine()" name="add"> <img
@@ -101,15 +100,23 @@
 
                         </li>
 
-                        <li><button onclick="onCahngeFontSize(this.name)" name="plus"> <img
-                                    src="img/ICONS/increase font - icon.png"></button></li>
-                        <li> <button onclick="onCahngeFontSize(this.name)" name="minus"> <img
-                                    src="img/ICONS/decrease font - icon.png"></button></li>
-                        <li><select oninput="onChangeFont(this.value)">
+                        <li>
+                            <button onclick="onChangeFontSize(this.name)" name="plus">
+                                <img src="img/ICONS/increase font - icon.png">
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="onChangeFontSize(this.name)" name="minus">
+                                <img src="img/ICONS/decrease font - icon.png">
+                            </button>
+                        </li>
+                        <li>
+                            <select oninput="onChangeFont(this.value)">
                                 <option value="impact">impact</option>
                                 <option value="Tahoma">Tahoma</option>
                                 <option value="Arial">Arial</option>
-                            </select> </li> <br>
+                            </select>
+                        </li>
 
                     </ul>
 
@@ -122,39 +129,43 @@
                                     src="img/ICONS/align-to-right.png"></button></li>
 
                     </ul>
-                        <ul class="emoji-container">
+                    <!-- <ul class="emoji-container"> -->
 
 
-                            <div class="emoji-container">
-                                <button onclick="onPutEmoji()"><img src="img/ICONS/left-arrow.png"> </button>
-                                <div class="emojis"></div>
-                                <button onclick="onPutEmoji()"><img src="img/ICONS/right-arrow.png"> </button>
-                            </div>
+                    <div class="emoji-container">
+                        <button onclick="onPutEmoji()"><img src="img/ICONS/left-arrow.png"> </button>
+                        <div class="emojis"></div>
+                        <button onclick="onPutEmoji()"><img src="img/ICONS/right-arrow.png"> </button>
+                    </div>
+                    <!-- </ul> -->
+
+                    <div class="social-container flex">
+                        <ul class="flex contain-facebook">
+                            <li>
+                                <button class="btn btn-primary">
+                                    <a href="#" onclick="downloadCanvas(this)" download="">
+                                        <img src="img/ICONS/downloading.png">
+                                    </a>
+                                </button>
+                            </li>
+                            <li>
+                                <div class="download-img">
+                                    <button class="btn web-btn" onclick="uploadImg()"><img
+                                            src="img/ICONS/facebook.png"></button>
+                                    <div class="share-container"> </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <button>
+                                    <img src="img/ICONS/upload.png">
+                                    <input class="upload-file" type="file" class="file-input btn" name="image"
+                                        onchange="onImgInput(event)" />
+                                </button>
+                            </li>
                         </ul>
+                    </div>
 
-                        <div class="social-container flex">
-                            <ul class="flex contain-facebook">
-                                <li> <button class="btn btn-primary">
-                                        <a href="#" onclick="downloadCanvas(this)" download=""><img
-                                                src="img/ICONS/downloading.png"></a>
-                                    </button></li>
-                                <li>
-                                    <div class="download-img">
-                                        <button class="btn web-btn" onclick="uploadImg()"><img
-                                                src="img/ICONS/facebook.png"></button>
-                                        <div class="share-container"> </div>
-
-                                    </div>
-                                </li>
-                                <li>
-                                    <button>
-                                        <img src="img/ICONS/upload.png">
-                                     <input  class="upload-file" type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                      
                 </div>
 
             </div>

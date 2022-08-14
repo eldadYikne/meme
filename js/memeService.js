@@ -35,7 +35,7 @@ var gMeme = {
             font: 'impact',
             lineHeigth: 50,
             isDrag: false,
-            pos:50,
+            pos: {x:200,y:50 },
 
         }
 
@@ -85,7 +85,7 @@ function setNewLine(value = 'New Text') {
         font: 'impact',
         lineHeigth: 350,
         isDrag: false,
-        pos: 350,
+        pos: { x:200,y:350 },
     })
 }
 
@@ -94,10 +94,10 @@ function lineLocation(idx) {
 
     let height = 50
 
-    if (idx === 0 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height
-    if (idx === 1 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height * 7
-    if (idx === 2 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height * 4
-    if (idx >= 3 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos = height * 4
+    if (idx === 0 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos.y = height
+    if (idx === 1 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos.y = height * 7
+    if (idx === 2 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos.y = height * 4
+    if (idx >= 3 && gMeme.lines.length === idx + 1) return gMeme.lines[idx].pos.y = height * 4
 }
 function setFont(font) {
     if (font === 'impact') return gMeme.lines[gMeme.selectedLineIdx].font = 'impact'
@@ -141,16 +141,15 @@ function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
 function isLineClicked(clickedPos) {
-  
     const { pos } = gMeme.lines[gMeme.selectedLineIdx]
-    if (clickedPos.y < pos + 40 && clickedPos.y > pos - 30) return true
+    if (clickedPos.y < pos.y + 40 && clickedPos.y > pos.y - 30) return true
     else return false
 }
 
 function moveLine(dx, dy) {
     const currLine = gMeme.lines[gMeme.selectedLineIdx]
-    // currLine.pos.x += dx
-    currLine.pos += dy
+    currLine.pos.x += dx
+    currLine.pos.y += dy
 }
 
 function setEmoji(){
@@ -159,4 +158,7 @@ let emojiShown=  emojis.slice(gStartShowIdx,gStartShowIdx+4 )
 gStartShowIdx+=4
 if(gStartShowIdx>=emojis.length)gStartShowIdx=0
 return emojiShown
+}
+function setColor(){
+
 }
