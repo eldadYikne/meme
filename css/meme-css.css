@@ -22,6 +22,7 @@
     --clr3: rgba(0, 191, 255, 0.491);
     --clr4: cadetblue;
     --clr5: white;
+    --clr6: #242424;
 }
 
 /* typograph */
@@ -43,7 +44,7 @@ canvas {
 }
 
 .key-word {
-    background-color: antiquewhite;
+    background-color: rgb(235, 235, 235);
     border-radius: 10px;
 }
 
@@ -99,23 +100,26 @@ nav ul li {
 
 
 }
-
+.header-line{
+    margin-inline-start: 10px;
+}
 header {
-    background: rgba(219, 139, 139, 0.382);
-    font-family: Arial, Helvetica, sans-serif;
+    background:var(--clr6);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
-    border-radius: 10px;
     color: aliceblue;
+    top: 0;
 
 }
 
 footer {
     position: absolute;
-    background: rgba(219, 139, 139, 0.382);
-    font-family: Arial, Helvetica, sans-serif;
+    background:var(--clr6);    font-family: Arial, Helvetica, sans-serif;
     color: aliceblue;
     font-size: 1.5rem;
     width: 100vw;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
     text-align: center;
 }
 
@@ -184,7 +188,7 @@ img {
 }
 
 .editor-container {
-    background-color: rgba(249, 196, 174, 0.903);
+    background-color:rgba(213, 213, 213, 0.598);
     border-radius: 15px;
     margin: 20px;
 }
@@ -258,7 +262,7 @@ select {
 }
 
 .flexible-btn {
-    background-color: burlywood;
+    background-color: rgb(48, 47, 45);
     color: white;
     font-size: 1.1rem;
     border-radius: 10px;
@@ -267,8 +271,8 @@ select {
 }
 
 .flexible-btn:hover {
-    background-color: rgba(163, 81, 163, 0.426);
-    color: rgb(121, 49, 121);
+    background-color: rgba(48, 48, 48, 0.426);
+    color: rgb(255, 255, 255);
     transition: 0.8s;
     cursor: pointer;
 }
@@ -315,10 +319,11 @@ button.toggle-menu {
 
 .input-meme {
     justify-content: center;
-
+margin: auto;
+margin-top: 40px;
 }
 
-.input-meme input {
+.input-meme  {
     font-size: 15px;
     opacity: 0.8;
     border-radius: 10px;
