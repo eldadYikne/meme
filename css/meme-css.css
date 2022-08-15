@@ -359,7 +359,7 @@ margin-top: 40px;
         height: 100vh;
         text-align: center;
         justify-content: center;
-        width:120px; 
+        width:100%; 
         transform: translateX(100%);
         background: rgba(219, 139, 139, 0.945);
 
