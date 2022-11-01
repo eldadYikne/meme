@@ -37,10 +37,16 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+ 
+ 
+ ## Home page
+ 
 An app I wrote with vanila JS and Canvas, in which you can create meme , CRUDL them [ Take a look, it's on Github pages!](https://eldadyikne.github.io/meme/)
 
  <img src="img/meme1.png" alt="" width="600" height="300">
-  </a>
+ 
+ ## Create meme
+ 
+  <img src="img/meme.png" alt="" width="600" height="300">
 
 
