@@ -19,7 +19,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -41,7 +40,7 @@
 
 An app I wrote with vanila JS, in which you can create meme , CRUDL them [ Take a look, it's on Github pages!](https://eldadyikne.github.io/meme/)
 
- <img src="img/meme.png" alt="" width="600" height="300">
+ <img src="img/meme1.png" alt="" width="600" height="300">
   </a>
 
 
